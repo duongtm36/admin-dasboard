@@ -1,12 +1,12 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Input } from 'hammerjs';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { COMPANYDB } from 'src/app/shared/data/tables/company';
-import { NgbdSortableHeader, SortEvent } from 'src/app/shared/directives/NgbdSortableHeader';
+import { SortEvent } from 'src/app/shared/directives/NgbdSortableHeader';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { TableService } from 'src/app/shared/services/table.service';
 import { CreateCustomerComponent } from './create/create.component';
+import { ConfirmModalComponent } from 'src/app/shared/components/modal/confirm/confirm-modal.component';
+import { Constants } from '../../../shared/constants/constant';
 
 
 @Component({
@@ -63,6 +63,16 @@ export class CustomerComponent implements OnInit {
   }
 
   openModalCreateCustomer() {
-    let modalRef = this.modalService.open(CreateCustomerComponent, { backdrop: 'static', size: 'lg', keyboard: true, centered: true });
+    let modalRef = this.modalService.open(CreateCustomerComponent, Constants.modalConfig);
+  }
+
+  openModalUpdateCustomer() {
+    let modalRef = this.modalService.open(CreateCustomerComponent, Constants.modalConfig);
+  }
+  openModalConfirmDeleteCustomer() {
+    let modalRef = this.modalService.open(ConfirmModalComponent, Constants.modalConfig);
+  }
+
+  search() {
   }
 }

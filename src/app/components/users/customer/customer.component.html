@@ -9,11 +9,18 @@
           <div class="row">
             <h5 class="col">
               {{config.fnLabel || ''}}</h5>
-            <div class="col">
-              <button type="button" placement="top" class="btn btn-primary f-right" (click)="openModalCreateCustomer()">
+            <div class="col d-flex w-100 flex-row-reverse">
+              <button type="button" placement="top" class="btn btn-primary" (click)="openModalCreateCustomer()">
                 <i class="icofont icofont-plus"></i>
                 Add
               </button>
+              <button type="button" placement="top" class="btn btn-outline-primary m-r-10" (click)="search()">
+                <i class="icofont icofont-ui-search"></i>
+                Search
+              </button>
+              <div class="form-group m-r-10 flex-fill">
+                <input class="form-control" id="username" type="text" placeholder="Please enter username" />
+              </div>
             </div>
           </div>
 
@@ -52,11 +59,11 @@
                   </td>
                   <td>
                     <div class="action">
-                      <li class="edit">
-                        <a href="#"><i class="icon-pencil-alt"></i></a>
+                      <li class="edit cursor-pointer" (click)="openModalUpdateCustomer()">
+                       <i class="icon-pencil-alt"></i>
                       </li>
-                      <li class="delete" (click)="onSelect(item.name)">
-                        <a href="#"><i class="icon-trash"></i></a>
+                      <li class="delete cursor-pointer" (click)="openModalConfirmDeleteCustomer(item)">
+                        <i class="icon-trash"></i>
                       </li>
                     </div>
                   </td>

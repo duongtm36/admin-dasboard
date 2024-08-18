@@ -7,7 +7,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
 // Components
 import { BasicDataTableComponent } from "./components/basic-data-table/basic-data-table.component";
-import { ModalComponent } from "./components/modal/modal.component";
+import { ConfirmModalComponent } from "./components/modal/confirm/confirm-modal.component";
 import { DatepickerComponent } from "./components/datepicker/datepicker.component";
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
@@ -34,6 +34,9 @@ import { SvgIconComponent } from "./components/svg-icon/svg-icon.component";
 import { LayoutService } from "./services/layout.service";
 import { NavService } from "./services/nav.service";
 import { LoaderService } from "./services/loader.service";
+// Constants
+import { Constants } from "./constants/constant";
+
 
 @NgModule({
   declarations: [
@@ -56,8 +59,9 @@ import { LoaderService } from "./services/loader.service";
     SvgIconComponent,
     SwiperComponent,
     BasicDataTableComponent,
-    ModalComponent,
+    ConfirmModalComponent,
     DatepickerComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -72,6 +76,6 @@ import { LoaderService } from "./services/loader.service";
   exports: [NgbModule, FormsModule, ReactiveFormsModule,
     TranslateModule,
     LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule,
-    BasicDataTableComponent, ModalComponent,DatepickerComponent],
+    BasicDataTableComponent, ConfirmModalComponent ,DatepickerComponent, ],
 })
 export class SharedModule { }

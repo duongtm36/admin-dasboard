@@ -6,6 +6,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // import { DragulaModule } from "ng2-dragula";
 import { TranslateModule } from "@ngx-translate/core";
 // Components
+import { BasicDataTableComponent } from "./components/basic-data-table/basic-data-table.component";
+import { ModalComponent } from "./components/modal/modal.component";
+import { DatepickerComponent } from "./components/datepicker/datepicker.component";
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
 import { FooterComponent } from "./components/footer/footer.component";
@@ -30,6 +33,7 @@ import { SwiperComponent } from './components/header/elements/swiper/swiper.comp
 import { SvgIconComponent } from "./components/svg-icon/svg-icon.component";
 import { LayoutService } from "./services/layout.service";
 import { NavService } from "./services/nav.service";
+import { LoaderService } from "./services/loader.service";
 
 @NgModule({
   declarations: [
@@ -51,9 +55,12 @@ import { NavService } from "./services/nav.service";
     MyAccountComponent,
     SvgIconComponent,
     SwiperComponent,
+    BasicDataTableComponent,
+    ModalComponent,
+    DatepickerComponent,
   ],
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -61,9 +68,10 @@ import { NavService } from "./services/nav.service";
     // DragulaModule.forRoot(),
     TranslateModule.forRoot(),
     SwiperModule],
-  providers: [NavService, LayoutService, DecimalPipe],
+  providers: [NavService, LayoutService, DecimalPipe, LoaderService],
   exports: [NgbModule, FormsModule, ReactiveFormsModule,
     TranslateModule,
-    LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule],
+    LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule,
+    BasicDataTableComponent, ModalComponent,DatepickerComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

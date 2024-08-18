@@ -1,22 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  styleUrls: ['./loader.component.scss'],
 })
-export class LoaderComponent implements OnInit {
+export class LoaderComponent implements OnInit{
 
-  public show: boolean = true;
 
-  constructor() {
-    setTimeout(() => {
-      this.show = false;
-    }, 3000);
+  constructor(public loaderService: LoaderService) {
   }
 
-  ngOnInit() { }
-
-  ngOnDestroy() { }
+  ngOnInit(): void {
+  }
+  
+  get isLoading(){
+    return this.loaderService.getIsLoading()
+  }
 
 }

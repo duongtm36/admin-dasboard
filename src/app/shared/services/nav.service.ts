@@ -93,6 +93,24 @@ export class NavService implements OnDestroy {
       ],
     },
     { path: "/single-page", icon: "search", title: "Single Page",  active: false, type: "link", bookmark: true },
+    {
+      headTitle1: "Management",
+      headTitle2: "Ready To Management",
+    },
+    {
+      title: "Users management",
+      icon: "user",
+      type: "sub",
+      badgeType: "light-primary",
+      badgeValue: "",
+      active: true,
+      children: [
+        { path: "/users/customer", title: "Customer", type: "link" },
+        { path: "/users/sale", title: "Sale", type: "link" },
+        { path: "/users/sale-admin", title: "Sale admin", type: "link" },
+        { path: "/users/admin", title: "Admin", type: "link" },
+      ],
+    },
   ];
 
   // Array

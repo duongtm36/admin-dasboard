@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { ContentComponent } from "./shared/components/layout/content/content.component";
 import { content } from "./shared/routes/routes";
+import { AdminGuard } from './shared/guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContentComponent,
+    canActivate: [AdminGuard],
     children: content
   },
   {

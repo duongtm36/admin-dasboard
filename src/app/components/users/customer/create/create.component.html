@@ -1,0 +1,76 @@
+<ng-container #content>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Create customer</h4>
+        <button type="button" class="btn-close" aria-label="Close"
+            (click)="activeModal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form theme-form" [formGroup]="formGroup">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="username">Username</label>
+                            <input class="form-control" id="username" type="text" placeholder="Please enter username"
+                                [formControl]="formGroup.controls.username" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="password">Password</label>
+                            <input class="form-control" id="password" type="password"
+                                placeholder="Please enter password" [formControl]="formGroup.controls.password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input class="form-control" id="confirm-password" type="password"
+                                placeholder="Please enter confirm password"
+                                [formControl]="formGroup.controls.confirmPassword" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="email">Email address</label>
+                            <input class="form-control" id="email" type="email" placeholder="Please enter email"
+                                [formControl]="formGroup.controls.email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="phone">Phone number</label>
+                            <input class="form-control" id="phone" type="text" placeholder="Please enter phone number"
+                                [formControl]="formGroup.controls.phone" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="col-form-label m-r-10">Status</label>
+                            <div class="media-body">
+                                <label class="switch">
+                                    <input type="checkbox"  [formControl]="formGroup.controls.status">
+                                    <span class="switch-state"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="create()">Save</button>
+    </div>
+</ng-container>

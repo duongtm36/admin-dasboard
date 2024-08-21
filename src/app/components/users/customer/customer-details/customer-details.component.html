@@ -1,0 +1,70 @@
+<ng-container #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss()"
+    ></button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div style="margin-top: 40px" class="row gap-4 justify-content-center">
+        <div class="card col-sm-3">
+          <div style="padding: 24px">
+            <div class="row justify-content-center">
+              <div class="account-avatar">
+                <div class="my-avatar">
+                  <img
+                    alt="avatar"
+                    src="https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-25.webp"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card col-sm-7 p-4 gap-2">
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="name">Full Name</label>
+                {{ customer.fullname }}
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="email">Email Address</label>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="phone">Phone Number</label>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="address">Address</label>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="country">Country</label>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="mb-3">
+                <label for="city">City</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

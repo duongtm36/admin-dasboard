@@ -1,0 +1,43 @@
+<app-breadcrumb
+  [title]="config.moduleLabel || ''"
+  [items]="config.breadcrumb"
+  [active_item]="config.activeItem"
+></app-breadcrumb>
+<!-- Container-fluid starts -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="nav mt-4 nav-tabs" id="accountTab" role="tablist">
+        <li class="nav-item" style="cursor: pointer" role="presentation">
+          <a
+            class="nav-link"
+            [class.active]="activeTab === 'account'"
+            (click)="selectTab('account')"
+            role="tab"
+          >
+            Account
+          </a>
+        </li>
+        <li class="nav-item" style="cursor: pointer" role="presentation">
+          <a
+            class="nav-link"
+            [class.active]="activeTab === 'security'"
+            (click)="selectTab('security')"
+            role="tab"
+          >
+            Security
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content mt-3">
+        <div *ngIf="activeTab === 'account'" class="tab-pane fade show active">
+          <app-account />
+        </div>
+        <div *ngIf="activeTab === 'security'" class="tab-pane fade show active">
+          <app-security />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends -->

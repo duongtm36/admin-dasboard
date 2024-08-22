@@ -18,7 +18,7 @@
                 type="button"
                 placement="top"
                 class="btn btn-primary"
-                (click)="openModalCreateCustomer()"
+                (click)="openModalCreateAdmin()"
               >
                 <i class="icofont icofont-plus"></i>
                 Add
@@ -58,10 +58,10 @@
                     Phone
                   </th>
                   <th scope="col" sortable="sale" (sort)="onSort($event)">
-                    Sale
+                    Status
                   </th>
                   <th scope="col" sortable="status" (sort)="onSort($event)">
-                    Status
+                    Role
                   </th>
                   <th scope="col">Action</th>
                 </tr>
@@ -71,7 +71,7 @@
                   <td scope="row">
                     <ngb-highlight
                       style="cursor: pointer"
-                      (click)="openModalDetailsCustomer(item)"
+                      (click)="openModalDetailsAdmin(item)"
                       [result]="item.username"
                       [term]="service.searchTerm"
                     ></ngb-highlight>
@@ -89,22 +89,22 @@
                     ></ngb-highlight>
                   </td>
                   <td scope="row">
-                    <ngb-highlight
-                      [result]="item.gender"
-                      [term]="service.searchTerm"
-                    ></ngb-highlight>
-                  </td>
-                  <td>
                     <span
                       [class]="{
                         'on-active': item.status === true,
                         'no-active': item.status === false
                       }"
                       style="padding: 4px; border-radius: 8px"
-                    >
-                      &#9679;
-                      <ngb-highlight
+                      ><ngb-highlight
                         [result]="item.status === true ? 'InActive' : 'Active'"
+                        [term]="service.searchTerm"
+                      ></ngb-highlight>
+                    </span>
+                  </td>
+                  <td>
+                    <span style="padding: 4px; border-radius: 8px">
+                      <ngb-highlight
+                        [result]="getRoleDisplayName(item.role)"
                         [term]="service.searchTerm"
                       ></ngb-highlight>
                     </span>
@@ -113,13 +113,13 @@
                     <div class="action">
                       <li
                         class="edit cursor-pointer"
-                        (click)="openModalUpdateCustomer(item)"
+                        (click)="openModalUpdateAdmin(item)"
                       >
                         <i class="icon-pencil-alt"></i>
                       </li>
                       <li
                         class="delete cursor-pointer"
-                        (click)="openModalConfirmDeleteCustomer(item)"
+                        (click)="openModalConfirmDeleteAdmin(item)"
                       >
                         <i class="icon-trash"></i>
                       </li>

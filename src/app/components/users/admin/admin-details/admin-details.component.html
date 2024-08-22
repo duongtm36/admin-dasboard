@@ -1,0 +1,111 @@
+<ng-container #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss()"
+    ></button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div style="margin-top: 40px" class="row gap-4 justify-content-center">
+        <div class="card col-sm-3">
+          <div class="card-header">
+            <div style="font-weight: 600; text-align: center">User Photo</div>
+          </div>
+          <div style="padding: 24px">
+            <div class="row justify-content-center">
+              <div class="account-avatar">
+                <div class="my-avatar">
+                  <img
+                    alt="avatar"
+                    src="https://pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev/mock/assets/images/avatar/avatar-25.webp"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card col-sm-7 p-4 pt-0 gap-2">
+          <div class="card-header" style="padding-left: 0">
+            <div style="font-weight: 600">User information</div>
+          </div>
+          <div style="padding-top: 24px" class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Name:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.fullname }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Gender:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.gender }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Gender:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ getRoleDisplayName(admin.role) }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Birth day:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.dateOfBirth }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Phone:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.phone }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Email:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.email }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="col d-flex">
+                <label style="color: #898989" for="name">Address:</label>
+                <div style="margin-left: 10px; font-weight: 500">
+                  {{ admin.address.street }}, {{ admin.address.city }},
+                  {{ admin.address.country }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,30 +1,30 @@
 import { Component, OnInit } from "@angular/core";
 import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
 
-import { Constants } from "src/app/shared/constants/constant";
-import { CreateCustomerComponent } from "./create/create.component";
+import { Constants } from "src/app//shared/constants/constant";
+import { ADMIN, Admin } from "src/app//shared/data/tables/admin";
 import { TableService } from "src/app/shared/services/table.service";
 import { LoaderService } from "src/app/shared/services/loader.service";
-import { Customer, CUSTOMER } from "src/app/shared/data/tables/customer";
 import { SortEvent } from "src/app/shared/directives/NgbdSortableHeader";
-import { CustomerDetailsComponent } from "./customer-details/customer-details.component";
+import { CreateAdminComponent } from "./create-admin/create-admin.component";
+import { AdminDetailsComponent } from "./admin-details/admin-details.component";
 import { ConfirmModalComponent } from "src/app/shared/components/modal/confirm/confirm-modal.component";
+
 @Component({
-  selector: "app-user-customer",
-  templateUrl: "./customer.component.html",
-  styleUrls: ["./customer.component.scss"],
-  providers: [NgbModalConfig, NgbModal],
+  selector: "app-admin",
+  templateUrl: "./admin.component.html",
+  styleUrl: "./admin.component.scss",
 })
-export class CustomerComponent implements OnInit {
+export class AdminComponent implements OnInit {
   // cấu hình breadcrumb
   config = {
     moduleLabel: "User management",
-    fnLabel: "Customers",
+    fnLabel: "Admin",
     items: [],
     limit: 10,
     total: 0,
     breadcrumb: ["Home", "User management"],
-    activeItem: "Customers",
+    activeItem: "Admin",
   };
   constructor(
     public service: TableService,
@@ -36,7 +36,7 @@ export class CustomerComponent implements OnInit {
     modalconfig.keyboard = false;
   }
 
-  customers = CUSTOMER;
+  admin = ADMIN;
 
   ngOnInit(): void {
     this.getData();
@@ -47,14 +47,14 @@ export class CustomerComponent implements OnInit {
   getData() {
     // call api
     this.loaderService.addQueue();
-    this.service.setUserData(this.customers);
-    this.service.tableItem$.subscribe((data) => {
-      // console.log("customer data: ", data);
-
-      this.config.items = data;
-    });
     this.service.total$.subscribe((total) => {
       this.config.total = total;
+    });
+    this.service.setUserData(this.admin);
+    this.service.tableItem$.subscribe((data) => {
+      // console.log("admin data: ", data);
+
+      this.config.items = data;
     });
 
     setTimeout(() => {
@@ -62,27 +62,27 @@ export class CustomerComponent implements OnInit {
     }, 2000);
   }
 
-  openModalCreateCustomer() {
+  openModalCreateAdmin() {
     let modalRef = this.modalService.open(
-      CreateCustomerComponent,
+      CreateAdminComponent,
       Constants.modalConfig
     );
 
-    modalRef.componentInstance.modalTitle = "Create Customer";
+    modalRef.componentInstance.modalTitle = "Create Admin";
   }
 
-  openModalUpdateCustomer(user: Customer) {
+  openModalUpdateAdmin(admin: Admin) {
     let modalRef = this.modalService.open(
-      CreateCustomerComponent,
+      CreateAdminComponent,
       Constants.modalConfig
     );
 
-    modalRef.componentInstance.modalTitle = "Edit " + user.username;
-    modalRef.componentInstance.user = user;
-    // console.log("user: ", user);
+    modalRef.componentInstance.modalTitle = "Edit " + admin.username;
+    modalRef.componentInstance.admin = admin;
+    // console.log("admin: ", admin);
   }
 
-  openModalConfirmDeleteCustomer(item: Customer) {
+  openModalConfirmDeleteAdmin(item: Admin) {
     let modalRef = this.modalService.open(
       ConfirmModalComponent,
       Constants.modalConfig
@@ -95,14 +95,27 @@ export class CustomerComponent implements OnInit {
     });
   }
 
-  openModalDetailsCustomer(item: Customer) {
+  openModalDetailsAdmin(item: Admin) {
     let modalRef = this.modalService.open(
-      CustomerDetailsComponent,
+      AdminDetailsComponent,
       Constants.modalConfig
     );
 
     modalRef.componentInstance.modalTitle = item.fullname;
-    modalRef.componentInstance.customer = item;
+    modalRef.componentInstance.admin = item;
+  }
+
+  getRoleDisplayName(role: string): string {
+    switch (role) {
+      case "admin":
+        return "Admin";
+      case "superadmin":
+        return "Super Admin";
+      case "moderator":
+        return "Moderator";
+      default:
+        return role;
+    }
   }
 
   search() {}

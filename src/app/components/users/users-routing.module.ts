@@ -3,6 +3,9 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { ProfileComponent } from "./profile/profile.component";
 import { CustomerComponent } from "./customer/customer.component";
+import { AdminComponent } from "./admin/admin.component";
+import { CUSTOMER } from "src/app/shared/data/tables/customer";
+import { ADMIN } from "src/app/shared/data/tables/admin";
 
 const routes: Routes = [
   {
@@ -10,7 +13,11 @@ const routes: Routes = [
     children: [
       {
         path: "customer",
-        component: CustomerComponent,
+        loadComponent: () =>
+          import("./customer/customer.component").then(
+            (mod) => mod.CustomerComponent
+          ),
+        // component: CustomerComponent,
       },
       {
         path: "sale",
@@ -22,7 +29,8 @@ const routes: Routes = [
       },
       {
         path: "admin",
-        component: CustomerComponent,
+        loadComponent: () =>
+          import("./admin/admin.component").then((mod) => mod.AdminComponent),
       },
       {
         path: "profile",

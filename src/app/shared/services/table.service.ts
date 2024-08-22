@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable, of, Subject } from "rxjs";
 import { DecimalPipe, SlicePipe } from "@angular/common";
 import { debounceTime, delay, map, switchMap, tap } from "rxjs/operators";
 import { SortColumn, SortDirection } from "../directives/NgbdSortableHeader";
-import { CompanyDB } from "../data/tables/company";
 import { Customer } from "../data/tables/customer";
 
 interface SearchResult {
@@ -117,19 +116,27 @@ export class TableService {
 
   setUserData(val: object) {
     this.userData = val;
+    this._search$.next(); // Kích hoạt tìm kiếm để cập nhật lại dữ liệu trong bảng
     // console.log(val);
   }
 
   deleteSingleData(name: string) {
-    const tableItem = this.userData;
-    const total = tableItem.length;
+    // const tableItem = this.userData;
+    // const total = tableItem.length;
 
-    tableItem.map((item) => {
-      if (name === item.username) {
-        this.userData.splice(name, 1);
-      }
-    });
-    return this._tableItem$.next(tableItem), this._total$.next(total);
+    // tableItem.map((item) => {
+    //   if (name === item.username) {
+    //     this.userData.splice(name, 1);
+    //   }
+    // });
+    // this._search$.next();
+    // return this._tableItem$.next(tableItem), this._total$.next(total);
+    const index = this.userData.findIndex((item) => item.username === name);
+    if (index !== -1) {
+      this.userData.splice(index, 1);
+      this._total$.next(this.userData.length);
+      this._search$.next();
+    }
   }
 
   private _set(patch: Partial<State>) {

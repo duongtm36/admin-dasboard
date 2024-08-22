@@ -10,6 +10,9 @@ import { LoaderService } from "src/app/shared/services/loader.service";
 import { SecurityComponent } from "./profile/security/security.component";
 import { CreateCustomerComponent } from "./customer/create/create.component";
 import { CustomerDetailsComponent } from "./customer/customer-details/customer-details.component";
+import { AdminComponent } from "./admin/admin.component";
+import { AdminDetailsComponent } from "./admin/admin-details/admin-details.component";
+import { CreateAdminComponent } from "./admin/create-admin/create-admin.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { CustomerDetailsComponent } from "./customer/customer-details/customer-d
     AccountComponent,
     SecurityComponent,
     CustomerDetailsComponent,
+    AdminComponent,
+    AdminDetailsComponent,
+    CreateAdminComponent,
   ],
   providers: [LoaderService],
   imports: [CommonModule, SharedModule, UsersRoutingModule],

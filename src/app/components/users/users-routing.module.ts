@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { RoleComponent } from "./role/role.component";
+import { AdminComponent } from "./admin/admin.component";
+import { GroupComponent } from "./group/group.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { CustomerComponent } from "./customer/customer.component";
-import { AdminComponent } from "./admin/admin.component";
-import { CUSTOMER } from "src/app/shared/data/tables/customer";
-import { ADMIN } from "src/app/shared/data/tables/admin";
 
 const routes: Routes = [
   {
@@ -13,11 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: "customer",
-        loadComponent: () =>
-          import("./customer/customer.component").then(
-            (mod) => mod.CustomerComponent
-          ),
-        // component: CustomerComponent,
+        component: CustomerComponent,
       },
       {
         path: "sale",
@@ -29,12 +25,19 @@ const routes: Routes = [
       },
       {
         path: "admin",
-        loadComponent: () =>
-          import("./admin/admin.component").then((mod) => mod.AdminComponent),
+        component: AdminComponent,
       },
       {
         path: "profile",
         component: ProfileComponent,
+      },
+      {
+        path: "group",
+        component: GroupComponent,
+      },
+      {
+        path: "role",
+        component: RoleComponent,
       },
     ],
   },

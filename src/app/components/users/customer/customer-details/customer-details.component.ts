@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
-import { CUSTOMER, Customer } from "../../../../shared/data/tables/customer";
+import { Customer } from "../../../../shared/data/tables/customer";
 
 @Component({
   selector: "app-customer-details",

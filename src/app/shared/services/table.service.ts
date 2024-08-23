@@ -40,6 +40,7 @@ function sort(
 }
 
 function matches(table: Customer, term: string, pipe: PipeTransform) {
+  if (term === "") return true;
   return (
     table.username.toLowerCase().includes(term.toLowerCase()) ||
     pipe.transform(table.id).includes(term)
@@ -105,6 +106,8 @@ export class TableService {
     this._set({ pageSize });
   }
   set searchTerm(searchTerm: string) {
+    console.log("st", searchTerm);
+
     this._set({ searchTerm });
   }
   set sortColumn(sortColumn: SortColumn) {
@@ -116,11 +119,12 @@ export class TableService {
 
   setUserData(val: object) {
     this.userData = val;
-    this._search$.next(); // Kích hoạt tìm kiếm để cập nhật lại dữ liệu trong bảng
+
+    this._search$.next();
     // console.log(val);
   }
 
-  deleteSingleData(name: string) {
+  deleteSingleData(id: number) {
     // const tableItem = this.userData;
     // const total = tableItem.length;
 
@@ -131,11 +135,14 @@ export class TableService {
     // });
     // this._search$.next();
     // return this._tableItem$.next(tableItem), this._total$.next(total);
-    const index = this.userData.findIndex((item) => item.username === name);
+    const index = this.userData.findIndex((item) => item.id === id);
+
     if (index !== -1) {
       this.userData.splice(index, 1);
       this._total$.next(this.userData.length);
       this._search$.next();
+
+      console.log(this.userData);
     }
   }
 
@@ -150,6 +157,10 @@ export class TableService {
 
     // 1. sort
     let tableItem = sort(this.userData, sortColumn, sortDirection);
+
+    // Debugging
+    // console.log("Search term:", searchTerm);
+    // console.log("Before filtering:", tableItem);
 
     // 2. filter
     const total = tableItem.length;

@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Admin } from "src/app/shared/data/tables/admin";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-admin-details",

@@ -1,11 +1,13 @@
-import { Component, input, Input } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { ROLE } from "src/app/shared/data/tables/role";
 import { ADMIN, Admin } from "src/app/shared/data/tables/admin";
 
 @Component({
@@ -15,10 +17,12 @@ import { ADMIN, Admin } from "src/app/shared/data/tables/admin";
 })
 export class CreateAdminComponent {
   formGroup = new FormGroup({
-    gender: new FormControl("male"),
-    fullname: new FormControl("", Validators.required),
     status: new FormControl(true),
+    role: new FormControl("admin"),
+    gender: new FormControl("male"),
+    profilePicture: new FormControl(""),
     phone: new FormControl("", Validators.required),
+    fullname: new FormControl("", Validators.required),
     username: new FormControl("", Validators.required),
     dateOfBirth: new FormControl("", Validators.required),
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -28,8 +32,6 @@ export class CreateAdminComponent {
       country: new FormControl("", Validators.required),
       postalCode: new FormControl("", Validators.required),
     }),
-    profilePicture: new FormControl(""),
-    role: new FormControl("admin"),
   });
 
   @Input() admin?: Admin;
@@ -48,25 +50,12 @@ export class CreateAdminComponent {
   ];
 
   selectRole: string = "";
-  role = [
-    {
-      value: "admin",
-      label: "Admin",
-    },
-    {
-      value: "superadmin",
-      label: "Super Admin",
-    },
-    {
-      value: "moderator",
-      label: "Moderator",
-    },
-  ];
+  role = ROLE;
 
   constructor(
-    public activeModal: NgbActiveModal,
     public form: FormBuilder,
-    public modalService: NgbModal
+    public modalService: NgbModal,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit() {
@@ -84,14 +73,14 @@ export class CreateAdminComponent {
     if (this.formGroup.valid) {
       if (this.admin) {
         this.admin.id;
-        this.admin.email = formValue.email;
         this.admin.role = formValue.role;
-        this.admin.profilePicture = formValue.profilePicture;
+        this.admin.email = formValue.email;
         this.admin.phone = formValue.phone;
         this.admin.status = formValue.status;
         this.admin.username = formValue.username;
         this.admin.fullname = formValue.fullname;
         this.admin.dateOfBirth = formValue.dateOfBirth;
+        this.admin.profilePicture = formValue.profilePicture;
         this.admin.gender = formValue.gender as "male" | "female";
         this.admin.address = {
           city: formValue.address.city,
@@ -103,13 +92,13 @@ export class CreateAdminComponent {
         const newAdmin: Admin = {
           id: Math.random(),
           role: formValue.role,
-          profilePicture: formValue.profilePicture,
           email: formValue.email,
           phone: formValue.phone,
           status: formValue.status,
           username: formValue.username,
           fullname: formValue.fullname,
           dateOfBirth: formValue.dateOfBirth,
+          profilePicture: formValue.profilePicture,
           gender: formValue.gender as "male" | "female",
           address: {
             city: formValue.address.city,

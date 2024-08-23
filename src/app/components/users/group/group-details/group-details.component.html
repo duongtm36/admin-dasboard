@@ -1,0 +1,46 @@
+<ng-container #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss()"
+    ></button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row p-4">
+        <div class="p-4">
+          <div class="col mt-3">
+            <span>Name: </span>
+            <span
+              style="font-weight: 500; font-size: 16px; margin-left: 12px"
+              >{{ group.name }}</span
+            >
+          </div>
+          <div class="col mt-3">
+            <span>Status: </span>
+            <span
+              [class]="{
+                'on-active': group.status === true,
+                'no-active': group.status === false
+              }"
+              style="padding: 4px; border-radius: 8px; margin-left: 12px"
+            >
+              {{ group.status === true ? "InActive" : "Active" }}
+            </span>
+          </div>
+          <div class="col mt-3">
+            <span>Description: </span>
+            <span style="font-weight: 500; font-size: 16px; margin-left: 12px">
+              <div style="max-height: 150px; overflow-y: auto">
+                {{ group.descrition }}
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

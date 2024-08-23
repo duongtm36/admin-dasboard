@@ -1,0 +1,139 @@
+<p>group works!</p>
+<app-breadcrumb
+  [title]="config.moduleLabel || ''"
+  [items]="config.breadcrumb"
+  [active_item]="config.activeItem"
+></app-breadcrumb>
+<!-- Container-fluid starts -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <h5 class="col">
+              {{ config.fnLabel || "" }}
+            </h5>
+            <div class="col d-flex w-100 flex-row-reverse">
+              <button
+                type="button"
+                placement="top"
+                class="btn btn-primary"
+                (click)="openModalCreateGroup()"
+              >
+                <i class="icofont icofont-plus"></i>
+                Add
+              </button>
+              <button
+                type="button"
+                placement="top"
+                class="btn btn-outline-primary m-r-10"
+                (click)="search()"
+              >
+                <i class="icofont icofont-ui-search"></i>
+                Search
+              </button>
+              <div class="form-group m-r-10 flex-fill">
+                <input
+                  class="form-control"
+                  id="username"
+                  type="text"
+                  placeholder="Please enter username"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body custom-datatable noscroll">
+          <div class="custom-datatable table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" sortable="username" (sort)="onSort($event)">
+                    Name
+                  </th>
+                  <th scope="col" sortable="email" (sort)="onSort($event)">
+                    Status
+                  </th>
+                  <th scope="col" sortable="phone" (sort)="onSort($event)">
+                    Users
+                  </th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of config.items">
+                  <td scope="row">
+                    <ngb-highlight
+                      style="cursor: pointer"
+                      (click)="openModalDetailsGroup(item)"
+                      [result]="item.name"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <span
+                      [class]="{
+                        'on-active': item.status === true,
+                        'no-active': item.status === false
+                      }"
+                      style="padding: 4px; border-radius: 8px"
+                    >
+                      &#9679;
+                      <ngb-highlight
+                        [result]="item.status === true ? 'InActive' : 'Active'"
+                        [term]="service.searchTerm"
+                      ></ngb-highlight>
+                    </span>
+                  </td>
+                  <td>
+                    <ngb-highlight
+                      [result]="getTotalUsersInGroup(item)"
+                      [term]="service.searchTerm"
+                    ></ngb-highlight>
+                  </td>
+                  <td>
+                    <div class="action">
+                      <li
+                        class="edit cursor-pointer"
+                        (click)="openModalUpdateGroup(item)"
+                      >
+                        <i class="icon-pencil-alt"></i>
+                      </li>
+                      <li
+                        class="delete cursor-pointer"
+                        (click)="openModalConfirmDeleteGroup(item)"
+                      >
+                        <i class="icon-trash"></i>
+                      </li>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+              <select
+                class="form-select"
+                style="width: auto"
+                name="pageSize"
+                [(ngModel)]="service.pageSize"
+              >
+                <option [ngValue]="2">2 items per page</option>
+                <option [ngValue]="4">4 items per page</option>
+                <option [ngValue]="6">6 items per page</option>
+              </select>
+              <ngb-pagination
+                class="ms-3"
+                [collectionSize]="config.total!"
+                [(page)]="service.page"
+                [pageSize]="service.pageSize"
+              >
+              </ngb-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends -->

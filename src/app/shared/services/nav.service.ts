@@ -23,7 +23,9 @@ export interface Menu {
 })
 export class NavService implements OnDestroy {
   private unsubscriber: Subject<any> = new Subject();
-  public screenWidth: BehaviorSubject<number> = new BehaviorSubject(window.innerWidth);
+  public screenWidth: BehaviorSubject<number> = new BehaviorSubject(
+    window.innerWidth
+  );
 
   // Search Box
   public search: boolean = false;
@@ -89,10 +91,21 @@ export class NavService implements OnDestroy {
       active: true,
       children: [
         { path: "/simple-page/first-page", title: "First Page", type: "link" },
-        { path: "/simple-page/second-page", title: "Second Page", type: "link" },
+        {
+          path: "/simple-page/second-page",
+          title: "Second Page",
+          type: "link",
+        },
       ],
     },
-    { path: "/single-page", icon: "search", title: "Single Page",  active: false, type: "link", bookmark: true },
+    {
+      path: "/single-page",
+      icon: "search",
+      title: "Single Page",
+      active: false,
+      type: "link",
+      bookmark: true,
+    },
     {
       headTitle1: "Management",
       headTitle2: "Ready To Management",
@@ -105,10 +118,12 @@ export class NavService implements OnDestroy {
       badgeValue: "",
       active: true,
       children: [
-        { path: "/users/customer", title: "Customer", type: "link" },
         { path: "/users/sale", title: "Sale", type: "link" },
-        { path: "/users/sale-admin", title: "Sale admin", type: "link" },
+        { path: "/users/role", title: "Role", type: "link" },
         { path: "/users/admin", title: "Admin", type: "link" },
+        { path: "/users/group", title: "Group", type: "link" },
+        { path: "/users/customer", title: "Customer", type: "link" },
+        { path: "/users/sale-admin", title: "Sale admin", type: "link" },
       ],
     },
   ];

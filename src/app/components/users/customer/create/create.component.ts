@@ -1,15 +1,13 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { CUSTOMER, Customer } from "src/app/shared/data/tables/customer";
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from "@angular/forms";
-import { CustomerDetailsComponent } from "../customer-details/customer-details.component";
-import { Constants } from "src/app/shared/constants/constant";
 
+import { CUSTOMER, Customer } from "src/app/shared/data/tables/customer";
 @Component({
   selector: "app-create-customer",
   styleUrl: "./create.component.scss",
@@ -17,10 +15,10 @@ import { Constants } from "src/app/shared/constants/constant";
 })
 export class CreateCustomerComponent implements OnInit {
   formGroup = new FormGroup({
-    gender: new FormControl("male"),
-    fullname: new FormControl("", Validators.required),
     status: new FormControl(true),
+    gender: new FormControl("male"),
     phone: new FormControl("", Validators.required),
+    fullname: new FormControl("", Validators.required),
     username: new FormControl("", Validators.required),
     dateOfBirth: new FormControl("", Validators.required),
     email: new FormControl("", [Validators.required, Validators.email]),
@@ -48,9 +46,9 @@ export class CreateCustomerComponent implements OnInit {
   ];
 
   constructor(
-    public activeModal: NgbActiveModal,
     public form: FormBuilder,
-    public modalService: NgbModal
+    public modalService: NgbModal,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit() {

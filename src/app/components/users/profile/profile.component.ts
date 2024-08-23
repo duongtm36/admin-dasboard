@@ -2,18 +2,18 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-profile",
-  templateUrl: "./profile.component.html",
   styleUrl: "./profile.component.scss",
+  templateUrl: "./profile.component.html",
 })
 export class ProfileComponent {
   config = {
-    moduleLabel: "User management",
-    fnLabel: "Profile",
+    total: 0,
     items: [],
     limit: 10,
-    total: 0,
-    breadcrumb: ["Home", "User management"],
+    fnLabel: "Profile",
     activeItem: "Profile",
+    moduleLabel: "User management",
+    breadcrumb: ["Home", "User management"],
   };
 
   activeTab: string = "account";

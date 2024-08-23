@@ -18,25 +18,24 @@ import { ConfirmModalComponent } from "src/app/shared/components/modal/confirm/c
 export class CustomerComponent implements OnInit {
   // cấu hình breadcrumb
   config = {
-    moduleLabel: "User management",
-    fnLabel: "Customers",
+    total: 0,
     items: [],
     limit: 10,
-    total: 0,
-    breadcrumb: ["Home", "User management"],
+    fnLabel: "Customers",
     activeItem: "Customers",
+    moduleLabel: "User management",
+    breadcrumb: ["Home", "User management"],
   };
   constructor(
     public service: TableService,
-    public loaderService: LoaderService,
+    public modalService: NgbModal,
     public modalconfig: NgbModalConfig,
-    public modalService: NgbModal
+    public loaderService: LoaderService
   ) {
-    modalconfig.backdrop = "static";
     modalconfig.keyboard = false;
+    modalconfig.backdrop = "static";
   }
-
-  customers = CUSTOMER;
+  customer = CUSTOMER;
 
   ngOnInit(): void {
     this.getData();
@@ -47,7 +46,7 @@ export class CustomerComponent implements OnInit {
   getData() {
     // call api
     this.loaderService.addQueue();
-    this.service.setUserData(this.customers);
+    this.service.setUserData(this.customer);
     this.service.tableItem$.subscribe((data) => {
       // console.log("customer data: ", data);
 
@@ -91,7 +90,7 @@ export class CustomerComponent implements OnInit {
     modalRef.componentInstance.title = `Confirm Deletion ${item.fullname}`;
     modalRef.componentInstance.message = `Are you sure you want to delete customer ${item.fullname}?`;
     modalRef.componentInstance.confirmEvent.subscribe(() => {
-      this.service.deleteSingleData(item.username);
+      this.service.deleteSingleData(item.id);
     });
   }
 

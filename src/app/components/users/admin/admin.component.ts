@@ -18,25 +18,23 @@ import { ConfirmModalComponent } from "src/app/shared/components/modal/confirm/c
 export class AdminComponent implements OnInit {
   // cấu hình breadcrumb
   config = {
-    moduleLabel: "User management",
-    fnLabel: "Admin",
+    total: 0,
     items: [],
     limit: 10,
-    total: 0,
-    breadcrumb: ["Home", "User management"],
+    fnLabel: "Admin",
     activeItem: "Admin",
+    moduleLabel: "User management",
+    breadcrumb: ["Home", "User management"],
   };
   constructor(
     public service: TableService,
-    public loaderService: LoaderService,
+    public modalService: NgbModal,
     public modalconfig: NgbModalConfig,
-    public modalService: NgbModal
+    public loaderService: LoaderService
   ) {
     modalconfig.backdrop = "static";
     modalconfig.keyboard = false;
   }
-
-  admin = ADMIN;
 
   ngOnInit(): void {
     this.getData();
@@ -50,7 +48,7 @@ export class AdminComponent implements OnInit {
     this.service.total$.subscribe((total) => {
       this.config.total = total;
     });
-    this.service.setUserData(this.admin);
+    this.service.setUserData(ADMIN);
     this.service.tableItem$.subscribe((data) => {
       // console.log("admin data: ", data);
 
@@ -91,7 +89,7 @@ export class AdminComponent implements OnInit {
     modalRef.componentInstance.title = `Confirm Deletion ${item.fullname}`;
     modalRef.componentInstance.message = `Are you sure you want to delete customer ${item.fullname}?`;
     modalRef.componentInstance.confirmEvent.subscribe(() => {
-      this.service.deleteSingleData(item.username);
+      this.service.deleteSingleData(item.id);
     });
   }
 

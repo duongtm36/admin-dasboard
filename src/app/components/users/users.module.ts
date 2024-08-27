@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
-import { FormBuilder, FormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { NgApexchartsModule } from "ng-apexcharts";
 
 import { RoleComponent } from "./role/role.component";
 import { AdminComponent } from "./admin/admin.component";
@@ -9,6 +10,7 @@ import { UsersRoutingModule } from "./users-routing.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { HistoryComponent } from "./history/history.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { ChartComponent } from "./history/chart/chart.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { AccountComponent } from "./profile/account/account.component";
 import { LoaderService } from "src/app/shared/services/loader.service";
@@ -21,13 +23,13 @@ import { CreateGroupComponent } from "./group/create-group/create-group.componen
 import { GroupDetailsComponent } from "./group/group-details/group-details.component";
 import { AdminDetailsComponent } from "./admin/admin-details/admin-details.component";
 import { CustomerDetailsComponent } from "./customer/customer-details/customer-details.component";
-import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
     RoleComponent,
     AdminComponent,
     GroupComponent,
+    ChartComponent,
     HistoryComponent,
     ProfileComponent,
     AccountComponent,

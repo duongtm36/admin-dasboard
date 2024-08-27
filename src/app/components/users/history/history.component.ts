@@ -1,14 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import * as chartData from "src/app/shared/data/dashboard/default";
-
-export interface Balance {
-  icon: string;
-  title: string;
-  price: string;
-  growth: string;
-  colorClass: string;
-  show?: boolean;
-}
+import { NgbModal, NgbModalConfig } from "@ng-bootstrap/ng-bootstrap";
+import { SortEvent } from "src/app/shared/directives/NgbdSortableHeader";
+import { LoaderService } from "src/app/shared/services/loader.service";
+import { TableService } from "src/app/shared/services/table.service";
+import { TRANSACTION } from "src/app/shared/data/tables/transaction";
 
 @Component({
   selector: "app-history",
@@ -16,37 +11,54 @@ export interface Balance {
   styleUrls: ["./history.component.scss"],
 })
 export class HistoryComponent implements OnInit {
-  public overallBalance = chartData.overallBalance;
+  // cấu hình breadcrumb
+  config = {
+    total: 0,
+    items: [],
+    limit: 10,
+    fnLabel: "History",
+    activeItem: "History",
+    moduleLabel: "User management",
+    breadcrumb: ["Home", "User management"],
+  };
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  toggle(item: Balance) {
-    item.show = !item.show;
+  constructor(
+    public service: TableService,
+    public modalService: NgbModal,
+    public modalconfig: NgbModalConfig,
+    public loaderService: LoaderService
+  ) {
+    modalconfig.keyboard = false;
+    modalconfig.backdrop = "static";
   }
 
-  public balance: Balance[] = [
-    {
-      icon: "income",
-      title: "Income",
-      price: "$22,678",
-      growth: "+$456",
-      colorClass: "success",
-    },
-    {
-      icon: "expense",
-      title: "Expense",
-      price: "$12,057",
-      growth: "+$256",
-      colorClass: "danger",
-    },
-    {
-      icon: "doller-return",
-      title: "Cashback",
-      price: "8,475",
-      growth: "",
-      colorClass: "success",
-    },
-  ];
+  transactions = TRANSACTION;
+
+  ngOnInit() {
+    this.getData();
+  }
+
+  onSort({ column, direction }: SortEvent) {}
+
+  search() {}
+
+  getData() {
+    // call api
+    this.loaderService.addQueue();
+    this.service.setUserData(this.transactions);
+    console.log("transc data: ", this.transactions);
+
+    this.service.tableItem$.subscribe((data) => {
+      // console.log("transc data: ", data);
+
+      this.config.items = data;
+    });
+    this.service.total$.subscribe((total) => {
+      this.config.total = total;
+    });
+
+    setTimeout(() => {
+      this.loaderService.removeQueue();
+    }, 2000);
+  }
 }

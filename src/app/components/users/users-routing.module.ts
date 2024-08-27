@@ -6,6 +6,7 @@ import { AdminComponent } from "./admin/admin.component";
 import { GroupComponent } from "./group/group.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { CustomerComponent } from "./customer/customer.component";
+import { HistoryComponent } from "./history/history.component";
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: "role",
         component: RoleComponent,
+      },
+      {
+        path: "history",
+        component: HistoryComponent,
       },
     ],
   },

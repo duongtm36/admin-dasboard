@@ -1,4 +1,21 @@
-import { ApexAnnotations, ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexFill, ApexGrid, ApexLegend, ApexMarkers, ApexNonAxisChartSeries, ApexPlotOptions, ApexResponsive, ApexStroke, ApexTheme, ApexTitleSubtitle, ApexXAxis, ApexYAxis } from "ng-apexcharts";
+import {
+  ApexAnnotations,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexDataLabels,
+  ApexFill,
+  ApexGrid,
+  ApexLegend,
+  ApexMarkers,
+  ApexNonAxisChartSeries,
+  ApexPlotOptions,
+  ApexResponsive,
+  ApexStroke,
+  ApexTheme,
+  ApexTitleSubtitle,
+  ApexXAxis,
+  ApexYAxis,
+} from "ng-apexcharts";
 
 let primary_color = localStorage.getItem("primary_color") || "#7366ff";
 let secondary_color = localStorage.getItem("secondary_color") || "#f73164";
@@ -31,11 +48,17 @@ export let overallBalance: ChartOptions | any = {
   series: [
     {
       name: "Earning",
-      data: [200, 200, 350, 400, 200, 250, 250, 350, 350, 500, 500, 700, 850, 700, 400, 400, 250, 250, 400, 350, 400],
+      data: [
+        200, 200, 350, 400, 200, 250, 250, 350, 350, 500, 500, 700, 850, 700,
+        400, 400, 250, 250, 400, 350, 400,
+      ],
     },
     {
       name: "Expense",
-      data: [400, 600, 700, 400, 700, 800, 800, 850, 850, 900, 900, 700, 600, 500, 800, 800, 800, 800, 400, 700, 800],
+      data: [
+        400, 600, 700, 400, 700, 800, 800, 850, 850, 900, 900, 700, 600, 500,
+        800, 800, 800, 800, 400, 700, 800,
+      ],
     },
   ],
   chart: {
@@ -105,7 +128,29 @@ export let overallBalance: ChartOptions | any = {
     },
   },
   xaxis: {
-    categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"],
+    categories: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+    ],
     labels: {
       style: {
         fontFamily: "Rubik, sans-serif",
@@ -351,22 +396,34 @@ export let timeLine: ChartOptions | any = {
       data: [
         {
           x: "Analysis",
-          y: [new Date("2022-01-01").getTime(), new Date("2022-02-30").getTime()],
+          y: [
+            new Date("2022-01-01").getTime(),
+            new Date("2022-02-30").getTime(),
+          ],
           fillColor: "var(--theme-deafult)",
         },
         {
           x: "Design",
-          y: [new Date("2022-02-20").getTime(), new Date("2022-04-08").getTime()],
+          y: [
+            new Date("2022-02-20").getTime(),
+            new Date("2022-04-08").getTime(),
+          ],
           fillColor: "#54BA4A",
         },
         {
           x: "Coding",
-          y: [new Date("2022-01-25").getTime(), new Date("2022-03-20").getTime()],
+          y: [
+            new Date("2022-01-25").getTime(),
+            new Date("2022-03-20").getTime(),
+          ],
           fillColor: "#FFAA05",
         },
         {
           x: "Testing",
-          y: [new Date("2022-01-01").getTime(), new Date("2022-03-12").getTime()],
+          y: [
+            new Date("2022-01-01").getTime(),
+            new Date("2022-03-12").getTime(),
+          ],
           fillColor: "#46A7FB",
         },
       ],
@@ -485,7 +542,21 @@ export let followersGrowth: ChartOptions | any = {
   },
   xaxis: {
     type: "category",
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan"],
+    categories: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan",
+    ],
     tickAmount: 10,
     labels: {
       style: {
@@ -701,19 +772,30 @@ export let orders: ChartOptions | any = {
   series: [
     {
       name: "Daily",
-      data: [2.15, 3, 1.5, 2, 2.4, 3, 2.4, 2.8, 1.5, 1.7, 3, 2.5, 3, 2, 2.15, 3, 1.1],
+      data: [
+        2.15, 3, 1.5, 2, 2.4, 3, 2.4, 2.8, 1.5, 1.7, 3, 2.5, 3, 2, 2.15, 3, 1.1,
+      ],
     },
     {
       name: "Weekly",
-      data: [-2.15, -3, -1.5, -2, -2.4, -3, -2.4, -2.8, -1.5, -1.7, -3, -2.5, -3, -2, -2.15, -3, -1.1],
+      data: [
+        -2.15, -3, -1.5, -2, -2.4, -3, -2.4, -2.8, -1.5, -1.7, -3, -2.5, -3, -2,
+        -2.15, -3, -1.1,
+      ],
     },
     {
       name: "Monthly",
-      data: [-2.25, -2.35, -2.45, -2.55, -2.65, -2.75, -2.85, -2.95, -3.0, -3.1, -3.2, -3.25, -3.1, -3.0, -2.95, -2.85, -2.75],
+      data: [
+        -2.25, -2.35, -2.45, -2.55, -2.65, -2.75, -2.85, -2.95, -3.0, -3.1,
+        -3.2, -3.25, -3.1, -3.0, -2.95, -2.85, -2.75,
+      ],
     },
     {
       name: "Yearly",
-      data: [2.25, 2.35, 2.45, 2.55, 2.65, 2.75, 2.85, 2.95, 3.0, 3.1, 3.2, 3.25, 3.1, 3.0, 2.95, 2.85, 2.75],
+      data: [
+        2.25, 2.35, 2.45, 2.55, 2.65, 2.75, 2.85, 2.95, 3.0, 3.1, 3.2, 3.25,
+        3.1, 3.0, 2.95, 2.85, 2.75,
+      ],
     },
   ],
   chart: {
@@ -781,7 +863,20 @@ export let orders: ChartOptions | any = {
     },
   },
   xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    categories: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
     offsetX: 0,
     offsetY: 0,
     labels: {

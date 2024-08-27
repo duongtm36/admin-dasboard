@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { employeeDB } from "src/app/shared/data/tables/employee";
 import { GROUP, Group } from "src/app/shared/data/tables/group";
 
 @Component({
@@ -8,17 +9,19 @@ import { GROUP, Group } from "src/app/shared/data/tables/group";
   styleUrl: "./group-details.component.scss",
 })
 export class GroupDetailsComponent implements OnInit {
-  constructor(public activeModal: NgbActiveModal) {}
   @Input() group: Group;
   @Input() modalTitle: string = "";
   @Input() item: number[]; // [1,2,3]
 
-  groups = GROUP;
+  users = employeeDB.emp;
+  displayedEmployees = [];
 
-  ngOnInit() {}
+  constructor(public activeModal: NgbActiveModal) {}
 
-  filterGroupsById(groups: Group[], ids: number[]): Group[] {
-    return groups.filter((group) => ids.includes(group.id));
+  ngOnInit() {
+    this.displayedEmployees = this.users.filter((user) =>
+      this.item.includes(user.id)
+    );
   }
 
   closeModal(content) {

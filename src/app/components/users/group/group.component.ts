@@ -90,7 +90,7 @@ export class GroupComponent implements OnInit {
     modalRef.componentInstance.title = `Confirm Deletion ${item.name}`;
     modalRef.componentInstance.message = `Are you sure you want to delete group ${item.name}?`;
     modalRef.componentInstance.confirmEvent.subscribe(() => {
-      console.log(item);
+      // console.log(item);
 
       this.service.deleteSingleData(item.id);
     });

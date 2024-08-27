@@ -51,29 +51,6 @@ export class RoleComponent implements OnInit {
   admin = ADMIN;
   adminCountByRole: { [key: string]: number } = {};
 
-  // options = [
-  //   {
-  //     value: "read",
-  //     label: "Read",
-  //   },
-  //   {
-  //     value: "write",
-  //     label: "Write",
-  //   },
-  //   {
-  //     value: "update",
-  //     label: "Update",
-  //   },
-  //   {
-  //     value: "delete",
-  //     label: "Delete",
-  //   },
-  //   {
-  //     value: "assign_roles",
-  //     label: "Assign Roles",
-  //   },
-  // ];
-
   ngOnInit(): void {
     this.getData();
     this.calculateAdminCountByRole();
@@ -124,7 +101,7 @@ export class RoleComponent implements OnInit {
 
     modalRef.componentInstance.modalTitle = "Edit " + role.value;
     modalRef.componentInstance.role = role;
-    // console.log("group: ", group);
+    console.log("Role: ", role);
   }
 
   openModalConfirmDeleteRole(item: Role) {
@@ -150,7 +127,7 @@ export class RoleComponent implements OnInit {
     );
 
     modalRef.componentInstance.modalTitle = item.value;
-    modalRef.componentInstance.group = item;
+    modalRef.componentInstance.role = item;
   }
 
   getTotalAccount() {}

@@ -1,3 +1,69 @@
-<p>
-  ceate-role works!
-</p>
+<ng-container #content>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form class="form theme-form" [formGroup]="formGroup">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-sm-12">
+            <div class="col">
+              <label for="status">Role name:</label>
+              <input
+                class="form-control"
+                id="name"
+                type="text"
+                formControlName="name"
+                placeholder="Please enter role name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-12">
+            <div class="col">
+              <label for="status">Description:</label>
+              <textarea
+                class="form-control"
+                id="description"
+                type="text"
+                formControlName="description"
+                placeholder="Please enter description"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3" formGroupName="permissions">
+          <label for="permissions">Permissions:</label>
+
+          <div class="col" *ngFor="let item of options">
+            <div class="checkbox p-0">
+              <input
+                [id]="item.value"
+                [formControlName]="item.value"
+                type="checkbox"
+              />
+              <label [for]="item.value">{{ item.label }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="activeModal.dismiss()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="create()">
+      Save
+    </button>
+  </div>
+</ng-container>

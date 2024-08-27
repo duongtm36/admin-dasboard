@@ -97,6 +97,7 @@ export class CreateCustomerComponent implements OnInit {
 
         CUSTOMER.push(newCustomer);
       }
+
       this.activeModal.dismiss();
     }
   }

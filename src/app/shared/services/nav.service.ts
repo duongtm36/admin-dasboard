@@ -85,18 +85,18 @@ export class NavService implements OnDestroy {
     {
       title: "Simple Page",
       icon: "home",
-      type: "sub",
-      badgeType: "light-primary",
-      badgeValue: "2",
+      type: "link",
+      // badgeType: "light-primary",
+      // badgeValue: "2",
       active: true,
-      children: [
-        { path: "/simple-page/first-page", title: "First Page", type: "link" },
-        {
-          path: "/simple-page/second-page",
-          title: "Second Page",
-          type: "link",
-        },
-      ],
+      // children: [
+      //   { path: "/simple-page/first-page", title: "First Page", type: "link" },
+      //   {
+      //     path: "/simple-page/second-page",
+      //     title: "Second Page",
+      //     type: "link",
+      //   },
+      // ],
     },
     {
       path: "/single-page",
@@ -106,27 +106,22 @@ export class NavService implements OnDestroy {
       type: "link",
       bookmark: true,
     },
-    {
-      headTitle1: "Management",
-      headTitle2: "Ready To Management",
-    },
-    {
-      title: "Users management",
-      icon: "user",
-      type: "sub",
-      badgeType: "light-primary",
-      badgeValue: "",
-      active: true,
-      children: [
-        { path: "/users/sale", title: "Sale", type: "link" },
-        { path: "/users/role", title: "Role", type: "link" },
-        { path: "/users/admin", title: "Admin", type: "link" },
-        { path: "/users/group", title: "Group", type: "link" },
-        { path: "/users/customer", title: "Customer", type: "link" },
-        { path: "/users/sale-admin", title: "Sale admin", type: "link" },
-        { path: "/users/history", title: "History", type: "link" },
-      ],
-    },
+    // {
+    //   headTitle1: "Management",
+    //   headTitle2: "Ready To Management",
+    // },
+    // {
+    //   title: "Users management",
+    //   icon: "user",
+    //   type: "sub",
+    //   badgeType: "light-primary",
+    //   badgeValue: "",
+    //   active: true,
+    //   children: [
+    //     { path: "/users/sale", title: "Sale", type: "link" },
+  
+    //   ],
+    // },
   ];
 
   // Array

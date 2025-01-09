@@ -211,3 +211,6 @@ body.dark-only.box-layout {
 @import "layout/sidebar.scss";
 @import "layout/rtl.scss";
 @import "layout/box-layout.scss";
+
+// custom css
+@import "./base/custom.scss"
